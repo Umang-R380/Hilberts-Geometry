@@ -1,30 +1,85 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Math Blog</title>
-    <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Umang's Math Archive</title>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        max-width: 900px;
+        margin: auto;
+      }
+      nav a {
+        margin-right: 1rem;
+        text-decoration: none;
+        font-weight: bold;
+        color: darkblue;
+      }
+      .markdown-content {
+        margin-top: 2rem;
+      }
+      select {
+        margin-top: 1rem;
+      }
+    </style>
   </head>
   <body>
-    <h1>Umang's Geometry Blog</h1>
-
+    <h1>Umang's Geometry & Analysis Corner</h1>
     <nav>
-      <a href="#hilbert">Hilbert Geometry</a> |
-      <a href="#complex">Complex Analysis</a>
+      <a href="#" onclick="loadSection('diffgeo')">Differential Geometry</a>
+      <a href="#" onclick="loadSection('complex')">Complex Analysis</a>
     </nav>
 
-    <hr>
+    <div id="fileSelector" style="display:none">
+      <label>Select topic:
+        <select id="fileDropdown" onchange="loadMarkdown(this.value)"></select>
+      </label>
+    </div>
 
-    <section id="hilbert">
-      <h2>Hilbert Geometry</h2>
-      <p>Here we talk about Hilbert's axioms: \( \exists \ell \text{ such that } A, B \in \ell \)</p>
-      <a href="#top">Back to top</a>
-    </section>
+    <div id="content" class="markdown-content"></div>
 
-    <section id="complex">
-      <h2>Complex Analysis</h2>
-      <p>Let \( f(z) = \frac{1}{z} \). Residue at \( z = 0 \) is infinite.</p>
-      <a href="#top">Back to top</a>
-    </section>
+    <script>
+      const files = {
+        diffgeo: [
+          'diffgeo1.md',
+          'diffgeo2.md' // Add more .md files here
+        ],
+        complex: [
+          'complex1.md',
+          'complex2.md' // Add more .md files here
+        ]
+      };
+
+      function loadSection(section) {
+        const dropdown = document.getElementById('fileDropdown');
+        dropdown.innerHTML = '';
+        files[section].forEach(file => {
+          const option = document.createElement('option');
+          option.value = file;
+          option.text = file;
+          dropdown.appendChild(option);
+        });
+        document.getElementById('fileSelector').style.display = 'block';
+        loadMarkdown(files[section][0]);
+      }
+
+      function loadMarkdown(filename) {
+        fetch(filename)
+          .then(res => res.text())
+          .then(text => {
+            document.getElementById('content').innerHTML = marked.parse(text);
+            MathJax.typesetPromise();
+          })
+          .catch(err => {
+            document.getElementById('content').innerHTML = '<p>Failed to load file: ' + filename + '</p>';
+          });
+      }
+    </script>
   </body>
 </html>
+
 
