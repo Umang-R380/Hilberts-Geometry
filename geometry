@@ -1,0 +1,40 @@
+---
+layout: default
+title: blog-Hilbert20
+---
+
+<h1>Hilbert’s 20 Axioms – Explained</h1>
+
+<div>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</div>
+
+<p>Hilbert’s axioms are grouped into five categories. We explain each below:</p>
+
+## I. Axioms of Incidence
+
+**1. Two distinct points determine a line.**  
+For any points \( A \) and \( B \), there is a line \( a \) such that \( A \in a \) and \( B \in a \).
+
+**2. Uniqueness of that line.**  
+If \( A, B \in a \cap b \), then \( a = b \).
+
+...
+
+## IV. Axiom of Parallels
+
+**19. Playfair’s Axiom**  
+Given a line \( a \) and a point \( P \notin a \), there exists at most one line through \( P \) parallel to \( a \).
+
+...
+
+## V. Axiom of Continuity
+
+**20. Archimedean Property**  
+If a set of points on a line has an upper bound, it has a least upper bound.
+
+---
+
+*This post is part of my ongoing geometry bullshit series.*
