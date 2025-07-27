@@ -1,11 +1,9 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Umang's Math Archive</title>
     <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <title>Umang's Math Archive</title>
     <style>
       body {
         font-family: sans-serif;
@@ -19,67 +17,123 @@
         font-weight: bold;
         color: darkblue;
       }
-      .markdown-content {
-        margin-top: 2rem;
+    </style>
+  </head>
+  <body>
+    <h1>Umang's Math Archive</h1>
+    <nav>
+      <a href="diffgeo.html">Differential Geometry</a>
+      <a href="complex.html">Complex Analysis</a>
+    </nav>
+    <p>Select one of the sections above to begin exploring the math content.</p>
+  </body>
+</html>
+
+
+<!-- diffgeo.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Differential Geometry</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        max-width: 900px;
+        margin: auto;
       }
-      select {
-        margin-top: 1rem;
+      a {
+        display: inline-block;
+        margin-bottom: 1rem;
+        text-decoration: none;
+        color: darkblue;
       }
     </style>
   </head>
   <body>
-    <h1>Umang's Geometry & Analysis Corner</h1>
-    <nav>
-      <a href="#" onclick="loadSection('diffgeo')">Differential Geometry</a>
-      <a href="#" onclick="loadSection('complex')">Complex Analysis</a>
-    </nav>
-
-    <div id="fileSelector" style="display:none">
-      <label>Select topic:
-        <select id="fileDropdown" onchange="loadMarkdown(this.value)"></select>
-      </label>
-    </div>
-
-    <div id="content" class="markdown-content"></div>
-
+    <a href="index.html">← Back to Home</a>
+    <h1>Differential Geometry</h1>
+    <div id="content"></div>
     <script>
-      const files = {
-        diffgeo: [
-          'diffgeo1.md',
-          'diffgeo2.md' // Add more .md files here
-        ],
-        complex: [
-          'complex1.md',
-          'complex2.md' // Add more .md files here
-        ]
+      const diffFiles = [
+        'diffgeo1.md',
+        'diffgeo2.md'
+      ];
+
+      const load = async () => {
+        for (const file of diffFiles) {
+          try {
+            const res = await fetch(file);
+            const text = await res.text();
+            const section = document.createElement('section');
+            section.innerHTML = marked.parse(text);
+            document.getElementById('content').appendChild(section);
+          } catch (err) {
+            console.log(`Failed to load ${file}`);
+          }
+        }
+        MathJax.typesetPromise();
       };
-
-      function loadSection(section) {
-        const dropdown = document.getElementById('fileDropdown');
-        dropdown.innerHTML = '';
-        files[section].forEach(file => {
-          const option = document.createElement('option');
-          option.value = file;
-          option.text = file;
-          dropdown.appendChild(option);
-        });
-        document.getElementById('fileSelector').style.display = 'block';
-        loadMarkdown(files[section][0]);
-      }
-
-      function loadMarkdown(filename) {
-        fetch(filename)
-          .then(res => res.text())
-          .then(text => {
-            document.getElementById('content').innerHTML = marked.parse(text);
-            MathJax.typesetPromise();
-          })
-          .catch(err => {
-            document.getElementById('content').innerHTML = '<p>Failed to load file: ' + filename + '</p>';
-          });
-      }
+      load();
     </script>
   </body>
 </html>
 
+
+<!-- complex.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Complex Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        max-width: 900px;
+        margin: auto;
+      }
+      a {
+        display: inline-block;
+        margin-bottom: 1rem;
+        text-decoration: none;
+        color: darkblue;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html">← Back to Home</a>
+    <h1>Complex Analysis</h1>
+    <div id="content"></div>
+    <script>
+      const complexFiles = [
+        'complex1.md',
+        'complex2.md'
+      ];
+
+      const load = async () => {
+        for (const file of complexFiles) {
+          try {
+            const res = await fetch(file);
+            const text = await res.text();
+            const section = document.createElement('section');
+            section.innerHTML = marked.parse(text);
+            document.getElementById('content').appendChild(section);
+          } catch (err) {
+            console.log(`Failed to load ${file}`);
+          }
+        }
+        MathJax.typesetPromise();
+      };
+      load();
+    </script>
+  </body>
+</html>
 
