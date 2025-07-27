@@ -1,139 +1,37 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Umang's Math Archive</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
-        max-width: 900px;
-        margin: auto;
-      }
-      nav a {
-        margin-right: 1rem;
-        text-decoration: none;
-        font-weight: bold;
-        color: darkblue;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Umang's Math Archive</h1>
-    <nav>
-      <a href="diffgeo.html">Differential Geometry</a>
-      <a href="complex.html">Complex Analysis</a>
-    </nav>
-    <p>Select one of the sections above to begin exploring the math content.</p>
-  </body>
-</html>
-
-
-<!-- diffgeo.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Differential Geometry</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
-        max-width: 900px;
-        margin: auto;
-      }
-      a {
-        display: inline-block;
-        margin-bottom: 1rem;
-        text-decoration: none;
-        color: darkblue;
-      }
-    </style>
-  </head>
-  <body>
-    <a href="index.html">← Back to Home</a>
-    <h1>Differential Geometry</h1>
-    <div id="content"></div>
-    <script>
-      const diffFiles = [
-        'diffgeo1.md',
-        'diffgeo2.md'
-      ];
-
-      const load = async () => {
-        for (const file of diffFiles) {
-          try {
-            const res = await fetch(file);
-            const text = await res.text();
-            const section = document.createElement('section');
-            section.innerHTML = marked.parse(text);
-            document.getElementById('content').appendChild(section);
-          } catch (err) {
-            console.log(`Failed to load ${file}`);
-          }
-        }
-        MathJax.typesetPromise();
-      };
-      load();
-    </script>
-  </body>
-</html>
-
-
-<!-- complex.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Complex Analysis</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
-        max-width: 900px;
-        margin: auto;
-      }
-      a {
-        display: inline-block;
-        margin-bottom: 1rem;
-        text-decoration: none;
-        color: darkblue;
-      }
-    </style>
-  </head>
-  <body>
-    <a href="index.html">← Back to Home</a>
-    <h1>Complex Analysis</h1>
-    <div id="content"></div>
-    <script>
-      const complexFiles = [
-        'complex1.md',
-        'complex2.md'
-      ];
-
-      const load = async () => {
-        for (const file of complexFiles) {
-          try {
-            const res = await fetch(file);
-            const text = await res.text();
-            const section = document.createElement('section');
-            section.innerHTML = marked.parse(text);
-            document.getElementById('content').appendChild(section);
-          } catch (err) {
-            console.log(`Failed to load ${file}`);
-          }
-        }
-        MathJax.typesetPromise();
-      };
-      load();
-    </script>
-  </body>
-</html>
+""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Umang's Math Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 3rem;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    .section-link {
+      display: block;
+      margin: 2rem 0;
+      font-size: 2rem;
+      text-decoration: none;
+      color: #333;
+      transition: 0.3s;
+    }
+    .section-link:hover {
+      color: #007acc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Umang's Math Blog</h1>
+  <a class="section-link" href="diffgeo.html">Differential Geometry</a>
+  <a class="section-link" href="complex.html">Complex Analysis</a>
+</body>
+</html>""
 
