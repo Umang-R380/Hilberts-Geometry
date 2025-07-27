@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hilbert's 20 Axioms</title>
+  <script type="text/JavaScript"
+    async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <h1>Hilbert’s 20 Axioms – Explained</h1>
+
+  <h2>I. Axioms of Incidence</h2>
+  <p><b>1.</b> Two distinct points determine a line: For any two points \( A \) and \( B \), there exists a line \( a \) such that \( A \in a \) and \( B \in a \).</p>
+  <p><b>2.</b> That line is unique: If \( A, B \in a \cap b \), then \( a = b \).</p>
+
+  <h2>II. Axioms of Order</h2>
+  <p><b>4.</b> If \( B \) is between \( A \) and \( C \), then \( A \), \( B \), and \( C \) are distinct collinear points, and \( B \) is also between \( C \) and \( A \).</p>
+
+  <h2>III. Axioms of Congruence</h2>
+  <p><b>10.</b> Congruence is reflexive: Any segment \( AB \) is congruent to itself.</p>
+
+  <h2>IV. Axiom of Parallels</h2>
+  <p><b>19.</b> Playfair’s Axiom: Given a line \( a \) and point \( P \notin a \), there is at most one line through \( P \) parallel to \( a \).</p>
+
+  <h2>V. Axiom of Continuity</h2>
+  <p><b>20.</b> Archimedean property: There are no infinitesimal lengths — i.e., line segments can be “measured” in terms of any other segment, eventually.</p>
+
+  <hr>
+  <p>This post is part of my geometry ramblings.</p>
+</body>
+</html>
